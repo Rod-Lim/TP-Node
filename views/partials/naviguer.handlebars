@@ -1,0 +1,22 @@
+<table id="table_vips">
+    <thead>
+        <tr>
+            <th class="noir">
+                <img src="/images/vips.png" alt="VIPS" />
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{#each unArticle}}
+                  <b>
+                      <u>
+                           <a href="?id={{this.VIP_NUMERO}}"  class="listeVIPs">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</a><br>
+                      </u>
+                  </b> 
+                {{/each}}
+            </td>
+        </tr>
+    </tbody>
+</table>

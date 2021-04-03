@@ -1,0 +1,53 @@
+<h1>Album photo</h1>
+{{#each tablePhoto}}
+{{this.PHOTO_NUMERO}}
+<br>
+{{/each}}
+
+<div class="album">
+    {{#if albumVip}}
+        {{#ifCond albumVip.0.PHOTO_NUMERO '!=' 1}}
+            <a href="?id={{albumVip.0.VIP_NUMERO}}&idPhoto={{dec albumVip.0.PHOTO_NUMERO}}"><<</a>    
+        {{/ifCond}}
+        <img src="images/vip/{{albumVip.0.PHOTO_ADRESSE}}" height ="200px">
+        {{#ifCond albumVip.0.PHOTO_NUMERO '!=' lastPhoto.0.PHOTO_NUMERO}}
+            <a href="?id={{albumVip.0.VIP_NUMERO}}&idPhoto={{inc albumVip.0.PHOTO_NUMERO}}">>></a>
+        {{/ifCond}}
+        <br>    
+        <div class="commentaire_photo">
+            Commentaire
+            <br>
+            <br>
+            {{albumVip.0.PHOTO_COMMENTAIRE}}
+        </div>
+    {{else}}    
+        Choisissez un VIP en cliquant sur sa photo !
+        <br>
+    {{/if}}
+    
+</div>
+<br>
+<div class="photo_tous_vip">
+{{#each photosUn}}
+<a href="?id={{this.VIP_NUMERO}}&idPhoto=1">
+    <img src="images/vip/{{this.PHOTO_ADRESSE}}" height ="200px" width="150px">
+</a>
+{{/each}}
+<br>
+{{#ifCond albumVip.0.VIP_NUMERO "!=" 1}}
+    <a href="?id=1&idPhoto=1">Début</a>
+    <a href="?id={{dec albumVip.0.VIP_NUMERO}}&idPhoto=1">Précédent</a>
+{{/ifCond}}
+{{#ifCond albumVip.0.VIP_NUMERO "!=" lastVip.0.VIP_NUMERO}}
+    <a href="?id={{inc albumVip.0.VIP_NUMERO}}&idPhoto=1">Suivant</a>
+    <a href="?id={{lastVip.0.VIP_NUMERO}}&idPhoto=1">Fin</a>
+{{/ifCond}}
+</div>
+
+<script>
+    function boutonSuivant(n) {
+        n += 1;
+        window.location.href="?id="+n+"";
+    }
+
+</script>

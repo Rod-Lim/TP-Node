@@ -1,0 +1,28 @@
+<div class = "articles">
+    Article(s)
+    {{#if articleVip}}
+        {{#each articleVip}}
+            <br>
+            <br>
+            {{#ifCond this.ARTICLE_TITRE '==' "Aucun"}}
+                <b><u>Article sans titre</u></b>
+            {{else}}
+                <b><u>{{this.ARTICLE_TITRE}}</u></b>
+            {{/ifCond}}
+            <br>
+            <br>
+            {{this.ARTICLE_RESUME}}
+            <br>
+            <br>
+            [Ajouté le {{formatDate this.ARTICLE_DATE_INSERT 'D MMMM YYYY'}}]
+        {{/each}}
+        <a href="/repertoire?id={{articleVip.0.VIP_NUMERO}}">voir sa fiche</a>
+    {{else}}
+        <br>
+        Choisissez un vip pour voir les articles le concernant.
+    {{/if}}
+</div>
+
+{{>naviguer}}
+
+
